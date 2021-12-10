@@ -18,8 +18,8 @@ def scrape(): # NASA Mars News
     soup = BeautifulSoup(html, "html.parser")
     elem_slide = soup.select_one('div.list_text')
 
-    news_title = elem_slide.find('div', class_='content_title').get_text()
-    news_p = elem_slide.find('div', class_='article_teaser_body').get_text()
+    news_title = [x.get_text() for x in elem_slide.find_all('div', class_='content_title')]
+    news_p = [x.get_text() for x in elem_slide.find_all('div', class_='article_teaser_body')]
 
 
 # ## JPL Mars Space Images - Featured Image
@@ -81,7 +81,7 @@ def scrape(): # NASA Mars News
       }, 
       "Img_mars": featured_image_url,
       "Mars_facts": mars_facts,
-      "Mars_Hemisphere": hemisphere_image_urls
+      "Mars_Hemisphere": hemisphere_image_urls,
     }
     browser.quit()
 
