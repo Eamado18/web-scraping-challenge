@@ -35,16 +35,13 @@
         <div class="col-md-8">
           <h2><mark>Featured Mars Image</mark></h2>
 
-          <!-- if images is False/None/non-existent, then default to error message -->
+     
           <img
             src="{{mars_data.featured_image_url | default('static/images/error.png', true) }}"
-            class="img-responsive"
-            alt="Responsive image"
           />
         </div>
 
         <div class="col-md-4">
-          <!-- Mars Facts -->
           <div class="row" id="mars-facts">
             <h4>Mars Facts</h4>
             <table class="table table-hover">{{ mars_data.facts | safe }}</table>
